@@ -1,0 +1,34 @@
+<html>
+{% extends 'flatpages/default.html' %}
+
+<head>
+{% block title %}    
+Post
+{% endblock title %}
+</head>
+
+<body>
+{% block content %}
+    {{ post }}
+<table class="table-bordered">
+    <tr><td>{{ post.title }}</td></tr>
+    <tr><td>{{ post.content }}</td></tr>
+    
+{#    <table style="background-color: #adb5bd">#}
+</table>
+    
+    <table>
+    {% for comm in comment %}
+    <tr>
+        <td>{{ comm.user.last_name }}</td>
+        <td>{{ comm.comment_text }}</td>
+        <td>{{ comm.create_time }}</td>
+    </tr>
+    {% endfor %}
+{#    </table>#}
+    
+</table>
+{% endblock content %}
+</body>
+
+</html>

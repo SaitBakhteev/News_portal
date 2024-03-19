@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'flatpages/default.html' %}
+    <meta charset="UTF-8">
+{% block title %}
+    <span class="list-group-flush">
+    <title>Title    </title>   </span>
+{% endblock title %}
+</head>
+<body>
+<!-- Таблица, выводящая новости/статьи -->
+{#{% load static %}#}
+{#<link href='{% static 'css/styles.css' %}' rel="stylesheet"/>#}
+{% block content %}    
+    <table class="table-bordered"  style="background-color: #25cff2; border-color: ghostwhite " cellspacing="10">
+<tbody>
+        <tr>
+            <td><h5>Заголовок поста</h5></td>
+            <td><h5>Дата публикации</h5></td>
+            <td><h5>Выдержка из статьи</h5></td>
+        </tr>
+        
+        <!-- Содержимое ячеек таблицы -->
+        {% for i in post %}
+            <tr>                
+                <td>{{ i.title }}</td>
+                <td>{{i.create_time}}</td>
+                <td>{{ i.content|truncatechars:20}}</td>
+            </tr>
+            
+        {% endfor %}
+</tbody></table>
+{% endblock content %}
+</body>
+</html>
